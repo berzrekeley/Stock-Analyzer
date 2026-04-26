@@ -6,6 +6,8 @@ export function useAnalysis() {
   const [error, setError] = useState(null)
   const [step, setStep] = useState('')
 
+  const API_BASE = import.meta.env.VITE_API_URL || '';
+
   const analyze = useCallback(async (query) => {
     setLoading(true)
     setError(null)
@@ -28,7 +30,7 @@ export function useAnalysis() {
       for (let i = 1; i <= 2; i++) {
         setStep(steps[i])
         
-        const res = await fetch('/api/analyze', {
+        const res = await fetch(`${API_BASE}/api/analyze`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ 
@@ -63,7 +65,7 @@ export function useAnalysis() {
   }, [])
 
   const recomputeDCF = useCallback(async (params) => {
-    const res = await fetch('/api/dcf', {
+    const res = await fetch(`${API_BASE}/api/dcf`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(params),

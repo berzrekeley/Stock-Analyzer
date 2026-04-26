@@ -15,9 +15,12 @@ from routers.analyze import router as analyze_router
 
 app = FastAPI(title="AI Stock Analysis Platform", version="1.0.0")
 
+# Load allowed origins from environment variable or default to local
+allowed_origins = os.getenv("ALLOWED_ORIGINS", "http://localhost:5173,http://127.0.0.1:5173,https://berzrekeley.github.io").split(",")
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"],
+    allow_origins=allowed_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

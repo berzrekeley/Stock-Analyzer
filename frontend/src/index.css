@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;500;600&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-root: #0B0E1A;
+  --bg-sidebar: #0D1117;
+  --bg-surface: #111827;
+  --bg-elevated: #1C2535;
+  --bg-input: #1A2233;
+  --border-default: #1E2A3A;
+  --border-subtle: #141D2E;
+  --border-active: #10B981;
+  --text-primary: #F8FAFC;
+  --text-secondary: #94A3B8;
+  --text-muted: #64748B;
+  --text-active: #10B981;
+  --bullish: #22C55E;
+  --bullish-bg: rgba(34,197,94,0.12);
+  --bullish-border: rgba(34,197,94,0.30);
+  --bearish: #EF4444;
+  --bearish-bg: rgba(239,68,68,0.12);
+  --bearish-border: rgba(239,68,68,0.30);
+  --neutral: #F59E0B;
+  --neutral-bg: rgba(245,158,11,0.12);
+  --neutral-border: rgba(245,158,11,0.30);
+  --accent: #10B981;
+  --accent-hover: #059669;
+  --accent-muted: rgba(16,185,129,0.10);
+  --metric-blue: #3B82F6;
+  --metric-cyan: #06B6D4;
+  --metric-purple: #8B5CF6;
+  --metric-orange: #F97316;
+}
+
+* { box-sizing: border-box; }
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: var(--bg-root);
+  color: var(--text-primary);
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-mono { font-family: 'Roboto Mono', 'JetBrains Mono', monospace; }
+.tabular-nums { font-variant-numeric: tabular-nums; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-root); }
+::-webkit-scrollbar-thumb { background: var(--border-default); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #2D3F5A; }
+
+/* Skeleton shimmer */
+@keyframes shimmer {
+  0% { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+.skeleton {
+  background: linear-gradient(90deg, #1C2535 25%, #243044 50%, #1C2535 75%);
+  background-size: 800px 100%;
+  animation: shimmer 1.6s infinite linear;
+  border-radius: 6px;
+}
+
+/* Card hover */
+.card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: 8px;
+  padding: 24px;
+  transition: border-color 150ms ease-out, box-shadow 150ms ease-out;
+}
+.card:hover {
+  border-color: #2D3F5A;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+
+/* Score banner */
+.score-banner {
+  background: rgba(16,185,129,0.05);
+  border: 1px solid rgba(16,185,129,0.15);
+  border-radius: 8px;
+  padding: 20px 24px;
+}
+
+/* Input focus */
+input:focus { outline: none; }
